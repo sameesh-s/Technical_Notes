@@ -1,0 +1,7 @@
+How to find a file using commad line 
+------------------------------------
+find / -type f -name "filename"
+/ => search the whole system
+~/ => search the entire home directory
+. => search the current directory
+
