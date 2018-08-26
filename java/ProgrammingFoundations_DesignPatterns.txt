@@ -24,5 +24,48 @@ Pro
 Suble Singleton Issues
 ----------------------
 * Dealing with MultiThreading:
-  1. Use a static intilizer to create a singleton object, as soon as JVM create
- 
+  1. Use a static intilizer to create a singleton object, as soon as JVM load the class it will intilize the variable.(We can omit private constructor calling, because it will intilize when JVM loading class).
+  2. Use synchronized keyword in getInstence method it will have method cost increezing.
+
+State Pattern
+=================
+The state pattern allows an object to alter its behavior when its internal state changes. The object will appear to change its class.
+Key Points
+----------
+* The pattern encapsulates state into separate classes.
+* The context delegates to the current state to handle requests.
+* Once a request is handled, the current state may change.
+  Each state has different behavior.
+* Encapsulate what varies
+* Favor compositioin oover inheritance.
+* Keep a class closed for modification but open for extension.
+* State and Strategy pattern follows composition over inheritence.
+
+Itertor Pattern
+===============
+The Itertor Pattern provides a way to access the elements of an aggregate object sequentially without exposing its underlaying representation.
+Itertor use case
+----------------
+* Ask the object for its iterator
+* Use the iterator to iterate through the items in the aggregate.
+* Iteration code now works with any kind of aggregate object( Array or Arraylist ..etc..)
+Design Principle (Single Responsibility principle)
+----------------
+A class should have only one resaon to change.
+Using Java's Built-in Iterator Interface
+---------------------------------------
+* java.util.Iterator
+  An interface for creating your own iterators
+  The type for buit-in collection iterators
+* Collection classes like ArrayList, Vector, LinkedList
+  All have a method, iterator(), which returns a built-in java.util.Iterator instance.
+Responsibility
+--------------
+* Every responsibility increases chande of change.
+* If you have two responsibilities, that is two areas of potential change.
+* We want to avoid change whenever possible.
+
+[#6] Design Principle
+----------------------
+A class should have only one reason to change.
+
