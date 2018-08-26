@@ -1,0 +1,28 @@
+
+Decorator Pattern
+-----------------
+
+Singleton Pattern
+-----------------
+ensures a classhas only one instance, and provides a global access point to it.
+Uses
+----
+* Connection and thread pools
+* Logging facilities
+* Preference and registry objects
+* Device, printer, and graphics drivers
+* UI dialog and other modal controls
+* Anywhere you want to ensure a resource exists only once
+Creation
+--------
+1.Preventing Instantiation: private constructor.
+2.Create a static variable of that class which will be used as to hold the singleton object.
+3.Create a static class which will return object if not existing then call the private constructor
+Pro
+---
+* Lazy instansation: object is never instantioted if its not used once.
+Suble Singleton Issues
+----------------------
+* Dealing with MultiThreading:
+  1. Use a static intilizer to create a singleton object, as soon as JVM create
+ 
