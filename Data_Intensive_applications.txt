@@ -1,0 +1,12 @@
+A data-intensive application is typically built from standard building blocks which provide commonly needed functionality
+* Store data so that they, or another application, can find it again later(databases)
+* Remember the result of an expensive operation, to speed up reads(caches)
+* Allow users to search data by keyword or filter it in various ways(serch indexes)
+* Send a message to another process, to be handled asynchronosuly ( Stream processing)
+* Periodically crunch a large amount of accumulated data(batch processing).
+
+Fault tolerence: netflix Chaos monkey
+[Impedence mimatch] If data is stored in relational tables, an awkward translation layer is required between the objects in the application code and the database model of tables, rows and columns. The disconnect between the models is sometimes called an impedance mismatch.
+
+In JSON representation, all the relevant information is in one place, and one query is sufficient.
+In document databases, joins are not needed for one-to-many tree structures, and support for joins is often weak.

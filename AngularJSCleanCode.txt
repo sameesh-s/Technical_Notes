@@ -1,0 +1,5 @@
+Namimg Conventions
+==================
+Filenames: 
+VariablesNames:
+

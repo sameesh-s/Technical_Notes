@@ -1,0 +1,13 @@
+Installation of Kafka on ubuntu
+-------------------------------
+1. Download from kafka.apache.org
+2. Extract it copy it where installation need to be
+3. Edit the server.properties inside the config folder
+
+Kafka New Producers
+-------------------
+* Can be used synchronously or asynchronously
+* Both modes can handle errors
+* Bounded memeory usage
+* Multi-threaded
+ 

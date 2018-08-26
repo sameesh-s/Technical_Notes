@@ -5,3 +5,15 @@ find / -type f -name "filename"
 ~/ => search the entire home directory
 . => search the current directory
 
+How to check Ubuntu version
+---------------------------
+lsb_relase -a
+
+To get the hostname of the machine
+----------------------------------
+hostname
+
+To check the FileSystem
+-----------------------
+either ext4 , xfs (both are supported) ext4 very fast allocation.
+mount
