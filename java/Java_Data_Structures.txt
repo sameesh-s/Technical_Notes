@@ -1,0 +1,19 @@
+Types of Data Structures
+========================
+A data structure is a way of collecting and organizing data.
+Choosing the right data structure impacts efficiency.
+Data comes from many sources(e.g., databases and files).
+Many data structures are implemented as linked lists.
+
+ArrayList - Stores objects and can grow and shrink
+LinkedList - uses pointers to keep track of elements.
+Vector - can grow and shring; provides synchronization.
+Stack - operates on last in, first out(LIFO).
+Queue - operates on first in, first out(FIFO).
+
+Collections framework
+Iterable interface
+
+ArrayList and Vector Advanatages
+--------------------------------
+

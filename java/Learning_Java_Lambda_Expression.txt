@@ -13,6 +13,27 @@ Actions
 Predicates
 
 No datatype decleration Lambda expression will inferred the data type.
+[NOTE] we can convert any implementation of interface with one abstract method with Lambda expression.
+eg: 
+custom Functional Interface
+GreetingFunction greeting = message ->
+  System.out.println("Java Programming" + message);
+
+@FunctionalInterface
+interface GreetingFunction {
+  void sayMessage(String message);
+}
+
+we can take anytype of method and convert it into lambda.
+//static method reference using ::
+IntFunction<String> intToString2 = Integer::toString();
+//lambdas made of Using constructor
+Function<String, BigInteger> newBigInt = BigInteger::new;
+//passing string and retruning a BigInt 
+System.out.println("Expected value: "+ newBigInt.apply("1234567"));
+//lambdas made of Using instance method
+Consumer<String> print = System.out::pringln;
+print.accept("coming to you directly from lambda");
 
 1. Predicate
 ------------
@@ -55,3 +76,72 @@ System.out.println("Add  1, 2 : " + add.apply(10,25));
 takes two arguments and returns one
 BinaryOperator<Integer> add = (a,b)-> a + b;
 System.out.println("ADD 1 + 2 : " + add.apply(1, 2));
+
+Creating Functional Interface
+=============================
+A functional Interface is an interface which has only one method in it.
+annotation : @FunctionalInterface
+
+Collections
+===========
+The Collections API wa introduced with Java 7.
+A Collection is a group of elements.
+They can store, retrieve, manipulate and communicate aggreage data.
+
+Set - a collection that does not contain duplicates.
+List - an ordered collection.
+Map - an object maps key to value.
+
+Collection Interface
+--------------------
+int size();
+boolean isEmpty();
+boolean contains(Object element);
+boolean add(E element);
+boolean remove(Object elemnt);
+Iterator<E> iterator();
+
+Collection to Lambda conversions
+--------------------------------
+Collections.sort(name, new Comparator<String>(){
+                            @Override
+                            public int compare(String  a, String b){
+                              return b.compareTo(a);
+                            }
+                    });
+//first iteration with lambda
+Collections.sort(names, (String a, String b)->{
+                          return b.compareTo(b);
+                      });
+//now remove the datatype and allow the compiler to infer type
+Collections.sort(name, (a, b)->b.compareTo(a));
+
+
+books.stream().collect(Collectors.summingInt(Book::getPages));
+List<String> list = books.stream()
+                         .map(Book::getAuthorName)
+                         .collect(Collections.toList());
+[Note] Collectors
+
+Strem
+=====
+java.util.stream
+This package contains interfaces for using streams.
+A stream represents a sequence of elements.
+The stream package was added to traverse collections.
+Most stream operations take a lambda expression.
+Stream operations are either intermediate or terminal.
+Terminal operations are either void or return a type.
+Intermediate operations return the stream itself(Used to chain multiple method calles).
+Common operation include map, filter(intermediate operations) and forEach(Terminal operator)
+sorted and collect are also very helpful.
+sorted is an intermdediate operation. which result a sorted view, but the original collection is not changed.
+Collect is used as a terminal operation.(transform element to a different kind of result type)
+[NOTE] Element in a stream cannot be changed
+
+Primitive Streams
+=================
+Int stream
+Long stream 
+Double stream
+
