@@ -1,0 +1,154 @@
+Spring Boot Essential Training from LinkedinLearning:
+-----------------------------------------------------
+
+
+Spring Boot Actuator
+--------------------
+
+Web Starter
+-----------
+Embedded tomcat
+
+JSON Marshaller
+---------------
+* With Spring Web you get the Jackson JSON marshaller
+* Useful for RESTful Web services
+* Default spring : Automatic marshalling and unmarshalling in web flows.
+
+Logging Frameworks
+------------------
+* Slf4J included
+* Spring Boot builds its own loggers.
+* Leverage properties to modify LogLevels.
+
+Spring Libraries
+----------------
+* Spring Boot auto configure
+* Startes for Tomcat, logging and Boot
+* Spring libraries include core, AOP, beans, context, expression
+* Spring web and webmvc
+
+Other Libraries
+---------------
+* Snake YAML
+* Validators (javax and hibernate)
+
+Configuring Embedded tomcat
+---------------------------
+* Servlets, Filters and Listeners
+  Spring Boot autoconfigures the default servlet for all responses at "/"
+  Any class of these types that are beans (config or component scanned) will be registered to the embedded container
+  Additional ServletContext can only be loaded through the ServletContextIntilizer interface
+* Property Based
+  server.address, server.port, server.contextPath
+  Session-based configs (cookies, timeouts, etx.)
+  Error page path
+  full list: org.springframework.boot.autoconfigure.web.ServerProperties
+* Compression
+  server.compression.enabled=true
+  Response must be 2,048 bytes to compress by default
+  Default responsetypes of text/html, text/xml, text/plain, text/css will be compressed by default
+* TLS/SSL
+  Native SSL suppport via property management
+  Most common embedded servlet change
+  Requires a Java Keystore that contains the certificate
+  Properties used to configure
+  
+Spring Boot Webapps
+-------------------
+Spring MVC
+----------
+* Spring Boot provides default configureations for Spring MVC.
+* Simple paradigm based on Model-View-Controller.
+* Template engine starter provides view resolvers.
+* Static file resolvers build in as well.
+
+Spring Boot Web Services
+------------------------
+* Spring MVC root
+  Leverage the same MVC pattern as WebApps for RESTful
+  The view is the supported mime type.
+  JSON and XML for RESTful Services.
+  SOAP is possible in a contract first Model.
+to create rest microservices: we have to use @RestController
+
+Spring-boot-devtools
+--------------------
+Class path change reflection in real time( not class load reflection: no jar adding would be reflected, only work on development)
+
+Packaging a Spring Boot Application
+-----------------------------------
+JAR Files( Make JAR, not WAR)
+----------
+* Default behavior is JAR Packging.
+* Produces a "fat.jar". all dpenedencies inclueded.
+* Executable.   
+
+WAR Files
+----------
+* Spring Boot supports WAR files
+* Executable and traditional
+* Modify build (set Maven packaging to WAR)
+* Exclude spring-boot-starter-tomcat from spring-boot-starter-web
+
+CommandLine Runner
+------------------
+
+Spring Boot and Data
+--------------------
+* Rich support for traditional RDBMS and NoSQL databases
+* Based entirely on the Spring Data project.
+* Starters leverage common defaults.
+*  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

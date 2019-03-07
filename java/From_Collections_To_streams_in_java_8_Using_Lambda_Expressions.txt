@@ -1,0 +1,21 @@
+What is Lambda Expression
+-------------------------
+passing code as parameter
+
+remarks: 
+one can put modifiers on the parameters of a lambda expression
+- The final keyword
+- Annotations (for use Reflection API)
+It is not possible to specify the return type of a lambda expression
+We can omit type of parameters 
+
+Method References
+-----------------
+An alternative syntax for lambda expressions.
+Function<Person, Integer> f = person -> person.getAge();
+Function<Person, Integer> f = Person::getAge;
+
+How to Create New API
+---------------------
+Lambdas + default methods + static methods.
+

@@ -3,3 +3,40 @@ Item 1: Consider static factory methods instead of constructors
 A class can provide a public static factory method: which is simply a static method that returns an instance of the class.
 One advantage of static factory methods is that, unlike constructors, they have names.
 
+2. Creating and Destroying Objects
+----------------------------------
+2.1: Consider static factory methods instead of constructors.
+  static method which returns a class.
+  Not same as the factory method.
+  Advantages: 
+    unlike constructors, they have names.
+    eg. BigInteger.probablePrime
+    unlike constructors, they are not required to create a new object each time they're invoked.(Flyweight pattern)
+  instance-controlled classes.
+  singletons, noninstantiable, immutable values
+  they can return an object of any subtype of their return type.(Interface based framework).
+  calss of the returned object can vary from call to call as a function of the input parameters.
+  EnumSet has no public constructor only staticfactory methods, according to the length of parameters it can return RegularEnumSet instance or JumboEnumSet instance.
+  class of the returned object need not exist when the class containing the method is written. Such flexible static factory methods from the basis of service provider frameworks. JDBC.
+    genera-purpose service provider framework package since java 6: java.util.ServiceLoader
+  Disadvantages
+  --------------
+  only static factory methods is that classes without public or protected constructors cannot be subclassed.
+  They are hard for programmers to find: documentation tools still lacks,
+  naming convention used for static factory methods:
+  .from - A type-conversion method that takes a single parameter and returns a corresponding instance of this type, for example.
+  .of - An aggregation method that takes multiple parameters and returns an instance of this type that incorporates them.
+  .valueOf
+  .instance or getInstance
+  .create or newInstance
+  .getType
+  .newType
+  .type
+
+2: Consider a builder when faced with many constructor parameters
+=================================================================
+Static factories and constructors share a limitation: they do not scale well to large numbers of optional parameters.
+replacement for : telescoping constructors.
+the telescoping  constructor pattern works, but it is hard to write client code when there are many parameters, and harder still to read it.
+Also replacement for JavaBeans pattern:: pattern that will construct object and call setters and getters to set values, Serious disadvantage because construction is split across multiple calls, a JavaBean may be in an inconsistent state partway through its construction, also it precludes the possibility of making a class immutable.
+

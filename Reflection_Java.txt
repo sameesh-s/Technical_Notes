@@ -1,0 +1,54 @@
+
+Reflection is the ability of a running program to examine itself and its software environment, and to change what it does depending on what it finds.
+To perform this self-examination, a program needs to have a representation of itself : metadata, 
+In object oriented world metadata is called as metaobjects.
+The runtime self-examination of the metaobjects is called introspection.
+metaobject modification 
+operations for using metadata.
+intercession: in which code is permitted to intercede in various phases of program execution. Java supplies rich set of operations for using metadata and just a few important intercession capabilities. 
+
+Important factors
+=================
+security
+code complexity
+runtime performance
+
+use cases: classes that support thesame method but implement no common interface.
+instanceof and casting an unfavourable alternative.
+Reflection avoids source code bloating, memory bloating, and unnecessary coupling.
+introspcetion
+Dynamic invocation of methods.
+
+Finding a method at runtime
+===========================
+Class cls = obj.getClass();
+getClass => java.lang.Object;
+Class objects are the most important kind of metaobject because all Java programs consist solely of classes.
+getClass method is final. This keeps Java programmers from fooling reflective programs.If it were not final, a programmer could overide getClass to return the wrong class.
+
+Class objects provide programming metadata about a class's fields, methods, constructors, and nested classes. Class objects also provide information about the inheritance hierarchy and provide access to reflective facilities. 
+Method method = cls.getMethod("setColor", new Class[] {Color.class});
+The first parameter to this query is a string containing the desired method's name , The second parameter is an array of class objects that identify the types of the method's parameters. 
+Class literals
+---------------
+Notice that the assignment does not use getClass to provide the class object for color . The getClass method is useful for obtaining the class for an object reference, but when we know only the name of the class, we need another way. Class literals are Java's way to specify a class object statically. 
+Syntacticall, any classname followed by .class evaluatesto a class object.
+
+The methods defince by Class for method query
+---------------------------------------------
+Mehod getMethod(String name, Class[] parameterTypes)
+----------------------------------------------------
+Returns a method object that represents a public method(either declared or inherited) fo the target Class object with the signature specified by the second paremters.
+
+Method[] getMethods()
+---------------------
+Returns an array of Method objects that represent all of the public methods(either declared or inherited) supported by target Class object.
+Method getDecalredMethod(String name, Class[] parameterTypes)
+--------------------------------------------------------------
+Returns a method object that represents a declared method of target Class object with the signature specified by the second parameters.4
+
+Method[] getDeclaredMethods()
+-----------------------------
+Returns an array of Method objects that represent all of the methods declared by the target Class object.
+
+
