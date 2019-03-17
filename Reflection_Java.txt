@@ -51,4 +51,82 @@ Method[] getDeclaredMethods()
 -----------------------------
 Returns an array of Method objects that represent all of the methods declared by the target Class object.
 
+To get a Method with name and object's as parameter 
+---------------------------------------------------
+Method method = cls.getMethod("setColor", new Class[] {Color.class});
+Querying for a prameterless method, it is legal to supply null which is treated the same as zero-length array.
+
+
+[NOTE] The getClass method is useful for obtaining the class for an object reference, but when we know only the name of the class, we need another way. Class literals are Java's way to specify a class object statically. Syntactically, any class name followed by .class evaluates to a class object.
+
+Using primitive in Dynamic method invocation
+--------------------------------------------
+Primitive need to be wrapped when passed into a dynamic invocation and unwrapped when received as a return value.
+
+Method method = obj.getClass().getMethod("hashCode", null);
+int code = ((Integer) method.invoke(obj, null)).intValue();
+
+Avoiding invocation pitfalls
+----------------------------
+if  I have a method representing setColor, why do I need to introspect for it every time? I'll just cache the first one that comes along and optimize out the rest of the queries.
+: illegalArgumentException 
+In Java, each method is identified by both its signature and its decalring class.
+if the class calling invoke does not have appropriate access privileges for the method, invoke throws an IllegalAccessException. can happen when invoking a private method outside of the class.
+
+[BOOK] Putting Metaclasses to Work.
+
+Reflection :: reflective access, modification, construction and dynamic loading.
+
+  Chpater 2 :: Accessing fields reflectively
+  ------------------------------------------
+  * Exploring the fields of a class
+  * Getting and setting field values
+  * Accessing nonpublic members
+ 
+# Memory leaks : in java result from a program retaining references to unwanted objects. These references prevent the garbage collector from reclaimin memory. Memory leaks can cause either a gradual deterioration in performance or worse, aprogram failure. A reflective program can traverse thos very same references and find unwanted objects using programmer-coded domain knowledge.
+
+# Serialization : is the conversion of an object into a contiguous text or binary representation. This representation can then be stored for later use. It can also be transmitted across a network to another program as a message or as a prameter or return value for remote invocation. A general  serialization system requires metadata in order to perform object conversion.
+
+# Property sheets : are visual editors that allow users to view and change the values of fields in an object. Such editors  facilitate maintenance interfaces and configurators for many kinds of systems. They also assist in the visual development of user interfaces. Property sheets require  metadata about the objets that can be edited.
+
+Dynamic loading and reflective construction
+===========================================
+* Loading classes at runtime
+* Instantiating objects using reflection
+* Enhancing delegation with reflection
+
+useage:: 
+Tomact is the reference implementation for the Java servlet framework.Servlets are classes that define behavior extensions for how web servers handle HTTP requests.
+The idea of servlets is simple. Any Java developer with a new requirement for Tomcat can define the behavior by implementing the requirement in  aservlet. The developer then installs theservlet propertly, and Tomcat uses the servlet code to respond to web requests. This extension happens while the web server is running.
+
+The reflective mechanisms for loading and instantiating new classes.
+[NOTE]Dynamic loading is the process by which the Java virtual machine  creates classes from bytecodes  at runtime.
+Class cls = Class.forName(dbClassName);
+Reflective construction : (className) cls.newInstance();
+:: The class loader may have already loaded the class. If so, the class loader merely returns the class object that was loaded earlier.
+If the class has not already been loaded, the system class loader typically searches the classpath for the appropriate .class file. If a file is found, the bytecodes are read and the loader constructs a class object. If the file is not found, the loader throws a ClassNotFoundException. The behaviour described here is the behavior for the system class loader.
+Getting array classes
+---------------------
+Although there are no class files for arrays, forName can still be used to obtain their class objects.
+Class cls = Class.forName("java.lang.String[]");
+Primitives and forName
+----------------------
+Class objects for primitives cannot be retrieved using forName. The line 
+Class.forName(char.class.getName()); ::> ClassNotFoundException
+Reflective construction basics
+------------------------------
+The newInstance method of Class creates a new instance of the class represented by the class object. Calling this method is equivalent to calling the class's constructor with no arguments. That is, X.class.newInstance() is the same as new X();
+Again the big difference is that newInstance() may be used to instantiate a class object returned by forName, whose name need not be known at compile time.
+[NOTE] should program to interface instead of implementation.
+Using constructor objects
+-------------------------
+The newInstance method is not the only way to instantiate a class reflectively. The Java Reflection API has a class of metaobjects, java.lang.reflect.Construcotr, for representing constructors
+cls.getConstructor(new Class[] {String.class, String.class});
+
+Using Java's dynamic proxy
+==========================
+* How to use java.lang.reflect.Proxy
+* Using proxy to implement decorators
+* Chaining proxies
+* Pitfalls of using Proxy
 
