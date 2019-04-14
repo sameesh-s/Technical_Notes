@@ -1,0 +1,39 @@
+JavaDoc is a java utility that can automatically create fancey HTML based documentation based on comments in your source files.
+All you have to do is add a comment for each public class, field, and method; then run the source files through the javadoc command; voila! you have a professional-looking, web-based documentation for your classes.
+
+Adding javadoc comments 
+-----------------------
+The basic rule for creating JavaDoc comments is that they begin  with /** and end with */
+We can place JavaDoc comments in any of three different location in a source file:
+* Immediately before the declaration of public class
+* Immediately before the declaration of a public field.
+* Immediately before the declaration of public method or constructor.
+The text in  a JavaDoc comment can include HTML markup if you want to apply fancy formatting. You should avoid using heading tags because JavaDoc creates those and your heading tags just confuse things. But you can use tags for boldface and italics or to format code examples (use the <pre> tag)
+In addition, you can include special doc tags that provide specific information used by JavaDoc to format the documentation pages.
+
+@author
+@version
+@since
+@param 
+@return 
+@throws
+@deprecated
+{@code}
+{@docRoot}
+@deprecated
+@exception
+{@inheritDoc}
+{@link}
+{@linkplain}
+{@literal}
+@see
+@serial
+@serialData
+@serialField
+@since
+@throws
+{@value}
+@version
+
+To generate javadoc from eclipse go to project => generate javadoc
+
